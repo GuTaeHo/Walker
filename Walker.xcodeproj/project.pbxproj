@@ -45,6 +45,11 @@
 			path = Walker;
 			sourceTree = "<group>";
 		};
+		057425D92DC0BBB400020F6D /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		059D68962DC08E8700343A19 /* WalkerWatch Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "WalkerWatch Watch App";
@@ -73,6 +78,7 @@
 		0517CB572DC08D7B005DE39A = {
 			isa = PBXGroup;
 			children = (
+				057425D92DC0BBB400020F6D /* Shared */,
 				0517CB622DC08D7B005DE39A /* Walker */,
 				059D68962DC08E8700343A19 /* WalkerWatch Watch App */,
 				0517CB612DC08D7B005DE39A /* Products */,
@@ -107,6 +113,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				0517CB622DC08D7B005DE39A /* Walker */,
+				057425D92DC0BBB400020F6D /* Shared */,
 			);
 			name = Walker;
 			packageProductDependencies = (
