@@ -25,18 +25,31 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
     
     func sendDataToPhone(data: [String: Any]) {
         if WCSession.default.isReachable {
-            WCSession.default.sendMessage(data, replyHandler: nil, errorHandler: { error in
-                print("Error sending to phone: \(error)")
+            WCSession.default.sendMessage(data, replyHandler: { response in
+                print("WatchSessionManager: replyHandler: \(response)")
+            }, errorHandler: { error in
+                print("WatchSessionManager: Error sending to phone: \(error)")
             })
+        } else {
+            print("isReachable false: iPhone 앱이 활성화되지 않았습니다.")
         }
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
-        print("activationDidCompleteWith: \(activationState)")
+        switch activationState {
+        case .notActivated:
+            print("WatchSessionManager: activationDidCompleteWith: notActivated")
+        case .inactive:
+            print("WatchSessionManager: activationDidCompleteWith: inactive")
+        case .activated:
+            print("WatchSessionManager: activationDidCompleteWith: activated")
+        @unknown default:
+            print("WatchSessionManager: activationDidCompleteWith: future feature")
+        }
     }
     
     // iPhone 으로부터 데이터 수신
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        print("Received message from iPhone: \(message)")
+        print("WatchSessionManager: Received message from iPhone: \(message)")
     }
 }

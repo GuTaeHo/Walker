@@ -25,25 +25,25 @@ class PhoneSessionManager: NSObject, WCSessionDelegate {
     func sendDataToWatch(data: [String: Any]) {
         if WCSession.default.isReachable {
             WCSession.default.sendMessage(data, replyHandler: nil, errorHandler: { error in
-                print("Error sending to watch: \(error)")
+                print("PhoneSessionManager: Error sending to watch: \(error)")
             })
         }
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
-        print("activationDidCompleteWith: \(activationState)")
+        print("PhoneSessionManager: activationDidCompleteWith: \(activationState)")
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
-        print("sessionDidBecomeInactive: \(session)")
+        print("PhoneSessionManager: sessionDidBecomeInactive: \(session)")
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        print("sessionDidDeactivate: \(session)")
+        print("PhoneSessionManager: sessionDidDeactivate: \(session)")
     }
     
     // Watch로부터 데이터 수신
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        print("didReceiveMessage from watch: \(message)")
+        print("PhoneSessionManager: didReceiveMessage from watch: \(message)")
     }
 }
